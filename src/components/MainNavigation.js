@@ -7,19 +7,17 @@ import { MenuItem, FormControl, Select } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import CallIcon from "@material-ui/icons/Call";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
-import Loading from "./Loading";
 
 function MainNavigation(props) {
   const [districtName, setDistrictName] = useState("nationwide");
   const [districtInfo, setDistrictInfo] = useState({});
   const [districts, setDistricts] = useState([]);
-  const [casesType, setCasesType] = useState("cases");
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/countries/NP?strict=true")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setDistrictInfo(data);
       });
   }, []);
