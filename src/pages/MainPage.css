@@ -1,0 +1,37 @@
+.main {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #f5f6fa;
+  padding: 20px;
+}
+
+.main__left {
+  flex: 0.8;
+}
+
+.main__right {
+  flex: 0.3;
+  margin-top: -20px;
+}
+
+.main__stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__information > h3 {
+  color: #6a5d5d;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.main__information > h3 :last-of-type {
+  margin-top: 1rem;
+}
+
+@media (max-width: 990px) {
+  .main {
+    flex-direction: column;
+  }
+}
