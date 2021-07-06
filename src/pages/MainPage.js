@@ -7,6 +7,8 @@ import LineGraph from "../components/LineGraph";
 import { useState } from "react";
 import numeral from "numeral";
 import { prettyPrintStat } from "../helper/util";
+import Map from "../components/Map";
+import "leaflet/dist/leaflet.css";
 
 function MainPage(props) {
   const [casesType, setCasesType] = useState("cases");
@@ -49,6 +51,12 @@ function MainPage(props) {
             type={typeValue}
           />
         </div>
+        <Map
+          districts={props.mapDistricts}
+          casesType={casesType}
+          center={props.mapCenter}
+          zoom={props.mapZoom}
+        />
       </div>
 
       <div className="main__right">

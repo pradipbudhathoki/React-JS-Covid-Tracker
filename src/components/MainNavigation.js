@@ -13,6 +13,13 @@ function MainNavigation(props) {
   const [districtInfo, setDistrictInfo] = useState({});
   const [districts, setDistricts] = useState([]);
 
+  const [mapDistricts, setMapDistricts] = useState([]);
+  const [mapCenter, setMapCenter] = useState({
+    lat: 27.7059079,
+    lng: 85.2754424,
+  });
+  const [mapZoom, setMapZoom] = useState(4);
+
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/countries/NP?strict=true")
       .then((response) => response.json())
@@ -35,6 +42,7 @@ function MainNavigation(props) {
         }));
 
         setDistricts(districts);
+        setMapDistricts(data);
       });
   }, []);
 
@@ -52,6 +60,8 @@ function MainNavigation(props) {
           .then((data) => {
             setDistrictInfo(data);
             setDistrictName(districtValue);
+            setMapCenter([28.3949, 84.124]);
+            setMapZoom(4);
           });
       } else {
         await fetch(
@@ -59,7 +69,7 @@ function MainNavigation(props) {
         )
           .then((response) => response.json())
           .then((data) => {
-            // console.log(data.covid_summary);
+            // console.log("District: ", data);
             const info = {
               todayCases: data.covid_summary.cases,
               todayRecovered: data.covid_summary.recovered,
@@ -68,6 +78,16 @@ function MainNavigation(props) {
             };
             setDistrictInfo(info);
             setDistrictName(districtValue);
+
+            // console.log(
+            //   data.centroid.coordinates[1],
+            //   data.centroid.coordinates[0]
+            // );
+            setMapCenter([
+              data.centroid.coordinates[1],
+              data.centroid.coordinates[0],
+            ]);
+            setMapZoom(5);
           });
       }
     } else {
@@ -76,11 +96,17 @@ function MainNavigation(props) {
         .then((data) => {
           setDistrictInfo(data);
           setDistrictName(districtValue);
+          setMapCenter([28.3949, 84.124]);
+          setMapZoom(4);
         });
     }
   };
 
   props.districtCasesInfo(districtInfo);
+
+  props.mapDistricts(mapDistricts);
+  props.mapCenter(mapCenter);
+  props.mapZoom(mapZoom);
 
   return (
     <div className="nav">

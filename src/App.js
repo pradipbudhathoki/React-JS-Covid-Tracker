@@ -11,6 +11,10 @@ function App() {
   const [districtData, setDistrictData] = useState([]);
   const [districtCases, setDistrictCases] = useState({});
 
+  const [mapDistricts, setMapDistricts] = useState([]);
+  const [mapCenter, setMapCenter] = useState({});
+  const [mapZoom, setMapZoom] = useState();
+
   // console.log(districtCases);
 
   return (
@@ -19,12 +23,21 @@ function App() {
         <MainNavigation
           districtData={setDistrictData}
           districtCasesInfo={setDistrictCases}
+          mapDistricts={setMapDistricts}
+          mapCenter={setMapCenter}
+          mapZoom={setMapZoom}
         />
       </div>
       <div>
         <Switch>
           <Route path="/" exact>
-            <MainPage district={districtData} districtInfo={districtCases} />
+            <MainPage
+              district={districtData}
+              districtInfo={districtCases}
+              mapDistricts={mapDistricts}
+              mapCenter={mapCenter}
+              mapZoom={mapZoom}
+            />
           </Route>
           <Route path="/hospital-page">
             <HospitalPage />
