@@ -5,8 +5,6 @@ import { CardContent } from "@material-ui/core";
 import Table from "../components/Table";
 import LineGraph from "../components/LineGraph";
 import { useState } from "react";
-import numeral from "numeral";
-import { prettyPrintStat } from "../helper/util";
 import Map from "../components/Map";
 import "leaflet/dist/leaflet.css";
 
@@ -25,29 +23,29 @@ function MainPage(props) {
             title="Corona Virus Cases"
             isRed
             active={casesType === "cases"}
-            cases={prettyPrintStat(props.districtInfo.todayCases)}
-            total={numeral(props.districtInfo.cases).format("0.0a")}
+            cases={props.districtInfo.todayCases}
+            total={props.districtInfo.cases}
           />
           <InfoBox
             onClick={(e) => setCasesType("recovered")}
             title="Recovered"
             active={casesType === "recovered"}
-            cases={prettyPrintStat(props.districtInfo.todayRecovered)}
-            total={numeral(props.districtInfo.recovered).format("0.0a")}
+            cases={props.districtInfo.todayRecovered}
+            total={props.districtInfo.recovered}
           />
           <InfoBox
             onClick={(e) => setCasesType("deaths")}
             title="Deaths"
             isRed
             active={casesType === "deaths"}
-            cases={prettyPrintStat(props.districtInfo.todayDeaths)}
-            total={numeral(props.districtInfo.deaths).format("0.0a")}
+            cases={props.districtInfo.todayDeaths}
+            total={props.districtInfo.deaths}
           />
           <InfoBox
             title="Active Cases"
             isRed
-            cases={prettyPrintStat(props.districtInfo.active)}
-            total={numeral(props.districtInfo.tests).format("0.0a")}
+            cases={props.districtInfo.active}
+            total={props.districtInfo.tests}
             type={typeValue}
           />
         </div>
