@@ -19,7 +19,20 @@
   justify-content: space-between;
 }
 
-.main__information > h3 {
+.graph {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.graph__chart {
+  flex: 1;
+  text-align: center;
+}
+
+.main__information > h3,
+.graph__chart > h3 {
   color: #6a5d5d;
   font-weight: 400;
   font-size: 1.5rem;
@@ -32,6 +45,9 @@
 
 @media (max-width: 990px) {
   .main {
+    flex-direction: column;
+  }
+  .graph {
     flex-direction: column;
   }
 }

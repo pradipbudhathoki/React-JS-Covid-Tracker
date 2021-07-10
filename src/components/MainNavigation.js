@@ -148,7 +148,7 @@ function MainNavigation(props) {
       <div className="nav__left">
         <div className="nav__header">
           <Link to="/" className="nav__title">
-            <h1>COVID-19 Tracker</h1>
+            <h1>COVID-19 Tracker Nepal</h1>
           </Link>
           <FormControl className="nav__dropdown">
             <Select
