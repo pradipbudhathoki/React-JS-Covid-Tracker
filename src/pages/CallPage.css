@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #f5f6fa;
+  padding: 20px;
+}
+
+.main__left {
+  flex: 0.8;
+}
+
+.main__right {
+  margin-top: -10px;
+}

@@ -43,7 +43,7 @@ function App() {
             <HospitalPage />
           </Route>
           <Route path="/call-page">
-            <CallPage />
+            <CallPage district={districtData} />
           </Route>
         </Switch>
       </div>
