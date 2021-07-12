@@ -61,24 +61,17 @@ function MainPage(props) {
         <div className="main__right">
           <CardContent>
             <div className="main__information">
-              <h3> Cases by Districts</h3>
-              <Table district={props.district} />
+              {/* <h3> Cases by Districts</h3>
+              <Table district={props.district} /> */}
+
+              <h3>NationWide Cases</h3>
+              <LineGraph casesType="cases" />
+              <h3>NationWide Recovered</h3>
+              <LineGraph casesType="recovered" />
+              <h3>NationWide Deaths</h3>
+              <LineGraph casesType="deaths" />
             </div>
           </CardContent>
-        </div>
-      </div>
-      <div className="graph">
-        <div className="graph__chart">
-          <h3>NationWide Cases</h3>
-          <LineGraph casesType="cases" />
-        </div>
-        <div className="graph__chart">
-          <h3>NationWide Recovered</h3>
-          <LineGraph casesType="recovered" />
-        </div>
-        <div className="graph__chart">
-          <h3>NationWide Deaths</h3>
-          <LineGraph casesType="deaths" />
         </div>
       </div>
     </div>

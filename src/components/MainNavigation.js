@@ -66,28 +66,6 @@ function MainNavigation(props) {
     const districtValue = event.target.value;
     console.log(districtValue);
 
-    // if (districtValue === "nationwide") {
-    //   await fetch("https://covid19.mohp.gov.np/covid/api/confirmedcases")
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       const info = {
-    //         todayCases: data.nepal.today_newcase,
-    //         todayRecovered: data.nepal.today_recovered,
-    //         todayDeaths: data.nepal.today_death,
-    //         active: data.nepal.extra2,
-    //         cases: data.nepal.positive,
-    //         recovered: data.nepal.extra1,
-    //         deaths: data.nepal.deaths,
-    //         tests: data.nepal.samples_tested,
-    //       };
-
-    //       setDistrictInfo(info);
-    //       setDistrictName(districtValue);
-    //       setMapCenter([28.3949, 84.124]);
-    //       setMapZoom(7);
-    //     });
-    // } else {}
-
     if (districtValue !== "nationwide") {
       await fetch(
         `https://data.askbhunte.com/api/v1/districts/${districtValue}`
