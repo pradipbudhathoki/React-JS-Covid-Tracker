@@ -1,9 +1,7 @@
 import React from "react";
-import "./LineGraph.css";
 import { useState, useEffect } from "react";
 import numeral from "numeral";
 import { Line } from "react-chartjs-2";
-import { BorderColor } from "@material-ui/icons";
 
 const options = {
   legend: {
@@ -86,7 +84,7 @@ function LineGraph(props) {
 
   //   console.log("Data: ", data);
   const COLOR = {
-    deaths: ["rgba(204,16,52,0.5)", "#CC1034"],
+    deaths: ["#E48D99", "#CC1034"],
     cases: ["#AFCBFA", "#1967D2"],
     recovered: ["#ccffcc", "#00e600"],
   };

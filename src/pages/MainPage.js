@@ -11,8 +11,8 @@ import "leaflet/dist/leaflet.css";
 function MainPage(props) {
   const [casesType, setCasesType] = useState("cases");
 
-  // console.log(props.districtInfo);
-  const typeValue = props.districtInfo.country ? "Tests" : "";
+  console.log(props.districtInfo);
+  const typeValue = props.districtInfo.tests ? "Tests" : "";
   // console.log(casesType);
   return (
     <div>
@@ -23,6 +23,8 @@ function MainPage(props) {
               onClick={(e) => setCasesType("cases")}
               title="Corona Virus Cases"
               isRed
+              bgColor="#AFCBFA"
+              // bgColor="#A8FFFF"
               active={casesType === "cases"}
               cases={props.districtInfo.todayCases}
               total={props.districtInfo.cases}
@@ -30,6 +32,8 @@ function MainPage(props) {
             <InfoBox
               onClick={(e) => setCasesType("recovered")}
               title="Recovered"
+              bgColor="#ccffcc"
+              // bgColor="#E5F4C2"
               active={casesType === "recovered"}
               cases={props.districtInfo.todayRecovered}
               total={props.districtInfo.recovered}
@@ -38,6 +42,8 @@ function MainPage(props) {
               onClick={(e) => setCasesType("deaths")}
               title="Deaths"
               isRed
+              bgColor="#E48D99"
+              // bgColor="#FCAAAA"
               active={casesType === "deaths"}
               cases={props.districtInfo.todayDeaths}
               total={props.districtInfo.deaths}
@@ -45,6 +51,8 @@ function MainPage(props) {
             <InfoBox
               title="Active Cases"
               isRed
+              bgColor="#F8EBFF"
+              // bgColor="#F8EBFF"
               cases={props.districtInfo.active}
               total={props.districtInfo.tests}
               type={typeValue}
