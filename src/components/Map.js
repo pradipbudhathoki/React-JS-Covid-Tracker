@@ -3,9 +3,6 @@ import "./Map.css";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 
 function Map(props) {
-
-
-
   return (
     <div className="map">
       <LeafletMap center={props.center} zoom={props.zoom}>
