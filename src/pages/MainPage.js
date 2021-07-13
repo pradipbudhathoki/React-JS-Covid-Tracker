@@ -2,7 +2,6 @@ import React from "react";
 import InfoBox from "../components/InfoBox";
 import "./MainPage.css";
 import { CardContent } from "@material-ui/core";
-import Table from "../components/Table";
 import LineGraph from "../components/LineGraph";
 import { useState } from "react";
 import Map from "../components/Map";
@@ -59,7 +58,7 @@ function MainPage(props) {
             />
           </div>
           <Map
-            districts={props.mapDistricts}
+            districtsInfo={props.mapDetails}
             casesType={casesType}
             center={props.mapCenter}
             zoom={props.mapZoom}

@@ -14,6 +14,7 @@ function App() {
   const [mapDistricts, setMapDistricts] = useState([]);
   const [mapCenter, setMapCenter] = useState({});
   const [mapZoom, setMapZoom] = useState();
+  const [mapDetails, setMapDetails] = useState([]);
 
   // console.log(districtCases);
 
@@ -26,6 +27,7 @@ function App() {
           mapDistricts={setMapDistricts}
           mapCenter={setMapCenter}
           mapZoom={setMapZoom}
+          mapInfo={setMapDetails}
         />
       </div>
       <div>
@@ -37,6 +39,7 @@ function App() {
               mapDistricts={mapDistricts}
               mapCenter={mapCenter}
               mapZoom={mapZoom}
+              mapDetails={mapDetails}
             />
           </Route>
           <Route path="/hospital-page">

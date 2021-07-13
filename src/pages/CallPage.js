@@ -2,12 +2,17 @@ import React from "react";
 import "./CallPage.css";
 import { CardContent } from "@material-ui/core";
 import Table from "../components/Table";
+import NumberDetail from "../components/NumberDetail";
 
 function CallPage(props) {
   return (
     <div className="main">
       <div className="main__left">
-        <h2>Info</h2>
+        <CardContent>
+          <h3>Emergency Number</h3>
+
+          <NumberDetail />
+        </CardContent>
       </div>
 
       <div className="main__right">

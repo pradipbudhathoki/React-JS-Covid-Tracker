@@ -19,6 +19,7 @@ function MainNavigation(props) {
     lng: 84.124,
   });
   const [mapZoom, setMapZoom] = useState(7);
+  const [mapDetails, setMapDetails] = useState([]);
 
   useEffect(() => {
     // https://disease.sh/v3/covid-19/countries/NP?strict=true
@@ -91,6 +92,17 @@ function MainNavigation(props) {
             data.centroid.coordinates[0],
           ]);
           setMapZoom(11);
+
+          const mapInfo = {
+            name: data.title,
+            cases: data.covid_summary.cases,
+            recovered: data.covid_summary.recovered,
+            deaths: data.covid_summary.death,
+            active: data.covid_summary.active,
+            lat: data.centroid.coordinates[1],
+            long: data.centroid.coordinates[0],
+          };
+          setMapDetails(mapInfo);
         });
     } else {
       await fetch("https://covid19.mohp.gov.np/covid/api/confirmedcases")
@@ -120,6 +132,7 @@ function MainNavigation(props) {
   props.mapDistricts(mapDistricts);
   props.mapCenter(mapCenter);
   props.mapZoom(mapZoom);
+  props.mapInfo(mapDetails);
 
   return (
     <div className="nav">

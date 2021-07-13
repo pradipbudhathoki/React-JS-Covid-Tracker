@@ -4,13 +4,10 @@ import "./InfoBox.css";
 import { Card, CardContent, Typography } from "@material-ui/core";
 
 function InfoBox(props) {
-  console.log(props.type);
+  // console.log(props.type);
   return (
     <Card
       onClick={props.onClick}
-      // className={`infoBox ${props.active && "infoBox--selected"} ${
-      //   props.isRed && "infoBox--red"
-      // }`}
       className="infoBox"
       style={{ backgroundColor: props.bgColor }}
     >
