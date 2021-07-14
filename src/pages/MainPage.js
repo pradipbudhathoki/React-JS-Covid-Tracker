@@ -58,7 +58,6 @@ function MainPage(props) {
           </div>
           <Map
             district={props.district}
-            casesType={casesType}
             center={props.mapCenter}
             zoom={props.mapZoom}
           />

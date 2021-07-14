@@ -51,6 +51,7 @@ function MainNavigation(props) {
 
         const districts = data.map((district) => ({
           name: district.title,
+          title: district.title.toUpperCase(),
           value: district.code,
           id: district.id,
           lat: district.centroid.coordinates[1],

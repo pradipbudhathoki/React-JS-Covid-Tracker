@@ -1,29 +1,31 @@
 import React from "react";
 import "./Map.css";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
-import { showData } from "../helper/util";
+
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
+import MapElement from "./MapElement";
 
 function Map(props) {
   const [districtData, setDistrictData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [casesType, setCasesType] = useState("cases");
 
-  // console.log("Info: Props.district ", props.district);
+  console.log("Info: Props.district ", props.district);
 
   useEffect(() => {
     setIsLoading(true);
-    const getLatitude = (value) => {
+    const getLatitude = (district) => {
       for (let i = 0; i < props.district.length; i++) {
-        if (value === props.district[i].value) {
+        if (district === props.district[i].title) {
           return props.district[i].lat;
         }
       }
     };
 
-    const getLongitude = (value) => {
+    const getLongitude = (district) => {
       for (let i = 0; i < props.district.length; i++) {
-        if (value === props.district[i].value) {
+        if (district === props.district[i].title) {
           return props.district[i].long;
         }
       }
@@ -41,12 +43,13 @@ function Map(props) {
             district: district.District.slice(4),
             value: district.District.slice(4).toLowerCase(),
             cases: district.Value,
-            lat: getLatitude(district.District.slice(4).toLowerCase()),
-            long: getLongitude(district.District.slice(4).toLowerCase()),
+            lat: getLatitude(district.District.slice(4)),
+            long: getLongitude(district.District.slice(4)),
           }));
 
           setDistrictData(info);
           setIsLoading(false);
+          setCasesType("cases");
         });
     };
     getData();
@@ -62,7 +65,8 @@ function Map(props) {
     <div className="map">
       <LeafletMap center={props.center} zoom={props.zoom}>
         <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
-        {showData(districtData)}
+        {/* {showData(districtData, casesType)} */}
+        <MapElement data={districtData} casesType={casesType} />
       </LeafletMap>
     </div>
   );

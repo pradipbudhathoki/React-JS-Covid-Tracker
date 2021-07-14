@@ -1,0 +1,44 @@
+import React from "react";
+import { Circle, Popup } from "react-leaflet";
+
+function MapElement({ data, casesType }) {
+  const casesTypeColors = {
+    cases: {
+      hex: "#CC1034",
+      rgb: "rgb(204, 16, 52)",
+      half_op: "rgba(204, 16, 52, 0.5)",
+      multiplier: 100,
+    },
+  };
+
+  //   district.lat ? district.lat : 28.3949,
+  //    district.long ? district.long : 84.124,
+  return (
+    <div>
+      {data.map((district) => (
+        <Circle
+          center={[
+            district.lat ? district.lat : 27.584942259802776,
+            district.long ? district.long : 84.43453047394195,
+          ]}
+          color={casesTypeColors[casesType].hex}
+          fillColor={casesTypeColors[casesType].hex}
+          fillOpacity={0.4}
+          radius={
+            Math.sqrt(district[casesType]) *
+            casesTypeColors[casesType].multiplier
+          }
+        >
+          <Popup>
+            <div>
+              <div>{district.district}</div>
+              <div>Total Infection: {district.cases}</div>
+            </div>
+          </Popup>
+        </Circle>
+      ))}
+    </div>
+  );
+}
+
+export default MapElement;
