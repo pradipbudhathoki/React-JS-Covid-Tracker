@@ -10,7 +10,6 @@ import "leaflet/dist/leaflet.css";
 function MainPage(props) {
   const [casesType, setCasesType] = useState("cases");
 
-  console.log(props.districtInfo);
   const typeValue = props.districtInfo.tests ? "Tests" : "";
   // console.log(casesType);
   return (
@@ -58,7 +57,7 @@ function MainPage(props) {
             />
           </div>
           <Map
-            districtsInfo={props.mapDetails}
+            district={props.district}
             casesType={casesType}
             center={props.mapCenter}
             zoom={props.mapZoom}

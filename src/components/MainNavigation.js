@@ -47,12 +47,14 @@ function MainNavigation(props) {
     fetch("https://data.askbhunte.com/api/v1/districts")
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
+        // console.log("Dataaaa", data);
 
         const districts = data.map((district) => ({
           name: district.title,
           value: district.code,
           id: district.id,
+          lat: district.centroid.coordinates[1],
+          long: district.centroid.coordinates[0],
         }));
 
         setDistricts(districts);

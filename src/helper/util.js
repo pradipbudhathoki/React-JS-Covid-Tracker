@@ -7,18 +7,6 @@ const casesTypeColors = {
     half_op: "rgba(204, 16, 52, 0.5)",
     multiplier: 800,
   },
-  recovered: {
-    hex: "#7dd71d",
-    rgb: "rgb(125, 215, 29)",
-    half_op: "rgba(125, 215, 29, 0.5)",
-    multiplier: 1200,
-  },
-  deaths: {
-    hex: "#fb4443",
-    rgb: "rgb(251, 68, 67)",
-    half_op: "rgba(251, 68, 67, 0.5)",
-    multiplier: 2000,
-  },
 };
 
 export const sortData = (data) => {
@@ -33,4 +21,31 @@ export const sortData = (data) => {
   return sortedData;
 };
 
-export const showData = () => {};
+const casesType = "cases";
+export const showData = (data) => {
+  /*
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].lat && data[i].long) {
+      return (
+        <Circle
+          center={[data[i].lat, data[i].long]}
+          color={casesTypeColors[casesType].hex}
+          fillColor={casesTypeColors[casesType].hex}
+          fillOpacity={0.4}
+          radius={
+            Math.sqrt(data[i][casesType]) *
+            casesTypeColors[casesType].multiplier
+          }
+        >
+          <Popup>
+            <div>
+              <div>{data[i].district}</div>
+              <div>Cases: {data[i].cases}</div>
+            </div>
+          </Popup>
+        </Circle>
+      );
+    }
+  }
+  */
+};
