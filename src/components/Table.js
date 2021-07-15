@@ -1,47 +1,52 @@
 import React from "react";
 import "./Table.css";
 import { useState, useEffect } from "react";
-import { sortData } from "../helper/util";
 import numeral from "numeral";
 import Loading from "./Loading";
 
-function Table(props) {
+function Table() {
   const [tableData, setTableData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const compare = (data) => {
+    let sortedData = [...data];
+    sortedData.sort((a, b) => {
+      if (a.cases > b.cases) {
+        return -1;
+      }
+      if (a.cases < b.cases) {
+        return 1;
+      }
+      return 0;
+    });
+    return sortedData;
+  };
+
   useEffect(() => {
     setIsLoading(true);
-
-    const getDistrictName = (id) => {
-      for (let i = 0; i < props.district.length; i++) {
-        if (id === props.district[i].id) {
-          return props.district[i].name;
-        }
-      }
-    };
-
-    const getDistrictsData = async () => {
-      fetch(`https://data.askbhunte.com/api/v1/covid/summary`)
+    const getData = async () => {
+      fetch(
+        "https://portal.edcd.gov.np/rest/api/fetchCasesByDistrict?filter=casesBetween&sDate=2020-01-01&eDate=2021-07-07&disease=COVID-19"
+      )
         .then((response) => response.json())
         .then((data) => {
           // console.log(data);
-          const activeData = data.district.active;
-          // console.log(activeData);
-          const districts = activeData.map((district) => ({
-            id: district.district,
-            cases: district.count,
-            name: getDistrictName(district.district),
+          const districts = data.map((district) => ({
+            name: district.District.slice(4),
+            cases: parseInt(district.Value, 10),
           }));
-          // console.log(districts);
-          let sortedData = sortData(districts);
+
+          let sortedData = compare(districts);
+
           setTableData(sortedData);
+
           setIsLoading(false);
         });
     };
-    getDistrictsData();
-  }, [props.district]);
+    getData();
+  }, []);
 
-  // console.log(tableData);
+  console.log("Table", tableData);
 
   if (isLoading) {
     return <Loading />;
@@ -49,11 +54,11 @@ function Table(props) {
 
   return (
     <div className="table">
-      {tableData.map((district) => (
+      {tableData.map((data) => (
         <tr>
-          <td>{district.name}</td>
+          <td>{data.name}</td>
           <td>
-            <strong>{numeral(district.cases).format("0,0")}</strong>
+            <strong>{numeral(data.cases).format("0,0")}</strong>
           </td>
         </tr>
       ))}

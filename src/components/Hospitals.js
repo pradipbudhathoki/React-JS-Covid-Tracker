@@ -42,12 +42,14 @@ function Hospitals() {
             </div>
           </td>
           <td>
-            <div className="hospital__contents">
+            <div className="hospital__contents__info">
+              &nbsp;
               <div>
-                <h3>Beds</h3>
+                <h3>General Beds</h3>
               </div>
+              &nbsp;
               <div>
-                <h3>ICU</h3>
+                <h3>ICU Beds</h3>
               </div>
               <div>
                 <h3>Ventilators</h3>

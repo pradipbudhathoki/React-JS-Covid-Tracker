@@ -11,7 +11,7 @@ function Map(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [casesType, setCasesType] = useState("cases");
 
-  console.log("Info: Props.district ", props.district);
+  // console.log("Info: Props.district ", props.district);
 
   useEffect(() => {
     setIsLoading(true);
@@ -56,6 +56,7 @@ function Map(props) {
   }, [props.district]);
 
   console.log("Cases: districtData ", districtData);
+  props.districtCases(districtData);
 
   if (isLoading) {
     return <Loading />;
@@ -65,7 +66,7 @@ function Map(props) {
     <div className="map">
       <LeafletMap center={props.center} zoom={props.zoom}>
         <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
-        {/* {showData(districtData, casesType)} */}
+
         <MapElement data={districtData} casesType={casesType} />
       </LeafletMap>
     </div>

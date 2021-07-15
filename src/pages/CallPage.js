@@ -5,6 +5,7 @@ import Table from "../components/Table";
 import NumberDetail from "../components/NumberDetail";
 
 function CallPage(props) {
+  console.log(props.districtInfoCases);
   return (
     <div className="main">
       <div className="main__left">
@@ -19,7 +20,7 @@ function CallPage(props) {
         <CardContent>
           <div className="main__information">
             <h3> Cases by Districts</h3>
-            <Table district={props.district} />
+            <Table />
           </div>
         </CardContent>
       </div>

@@ -69,6 +69,15 @@ hospital-items tr:hover::after {
 .hospital__contents {
   width: 500px;
   padding: 30px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hospital__contents__info {
+  width: 640px;
+  padding: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
