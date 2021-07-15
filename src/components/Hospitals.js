@@ -33,8 +33,29 @@ function Hospitals() {
   console.log(hospitalInfo);
 
   return (
-    <div>
-      <h1>Hospital</h1>
+    <div className="hospital">
+      <div className="hospital__header">
+        <tr>
+          <td>
+            <div className="hospital__contents">
+              <h3>Hospital Name</h3>
+            </div>
+          </td>
+          <td>
+            <div className="hospital__contents">
+              <div>
+                <h3>Beds</h3>
+              </div>
+              <div>
+                <h3>ICU</h3>
+              </div>
+              <div>
+                <h3>Ventilators</h3>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </div>
       {hospitalInfo.map((data) => (
         <HospitalItems
           name={data.name}
