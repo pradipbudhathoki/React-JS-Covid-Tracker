@@ -1,8 +1,10 @@
 .dropdown {
+  margin-top: -15px;
   display: flex;
   justify-content: center;
 }
 
 .dropdown__dropdown {
   background-color: white;
+  width: 170px;
 }

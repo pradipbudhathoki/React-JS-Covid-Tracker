@@ -69,62 +69,60 @@ function Dropdown(props) {
     console.log(districtValue);
 
     if (districtValue) {
-      await fetch(
-        `https://data.askbhunte.com/api/v1/districts/${districtValue}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log("District: ", data);
-          const info = {
-            todayCases: data.covid_summary.cases,
-            todayRecovered: data.covid_summary.recovered,
-            todayDeaths: data.covid_summary.death,
-            active: data.covid_summary.active,
-          };
-          setDistrictInfo(info);
-          setDistrictName(districtValue);
+      if (districtValue === "nationwide") {
+        await fetch("https://covid19.mohp.gov.np/covid/api/confirmedcases")
+          .then((response) => response.json())
+          .then((data) => {
+            const info = {
+              todayCases: data.nepal.today_newcase,
+              todayRecovered: data.nepal.today_recovered,
+              todayDeaths: data.nepal.today_death,
+              active: data.nepal.extra2,
+              cases: data.nepal.positive,
+              recovered: data.nepal.extra1,
+              deaths: data.nepal.deaths,
+              tests: data.nepal.samples_tested,
+            };
 
-          // console.log(
-          //   data.centroid.coordinates[1],
-          //   data.centroid.coordinates[0]
-          // );
-          setMapCenter([
-            data.centroid.coordinates[1],
-            data.centroid.coordinates[0],
-          ]);
-          setMapZoom(10);
+            setDistrictInfo(info);
+            setDistrictName(districtValue);
+            setMapCenter([28.3949, 84.124]);
+            setMapZoom(7);
+          });
+      } else {
+        await fetch(
+          `https://data.askbhunte.com/api/v1/districts/${districtValue}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log("District: ", data);
+            const info = {
+              todayCases: data.covid_summary.cases,
+              todayRecovered: data.covid_summary.recovered,
+              todayDeaths: data.covid_summary.death,
+              active: data.covid_summary.active,
+            };
+            setDistrictInfo(info);
+            setDistrictName(districtValue);
 
-          //   const mapInfo = {
-          //     name: data.title,
-          //     cases: data.covid_summary.cases,
-          //     recovered: data.covid_summary.recovered,
-          //     deaths: data.covid_summary.death,
-          //     active: data.covid_summary.active,
-          //     lat: data.centroid.coordinates[1],
-          //     long: data.centroid.coordinates[0],
-          //   };
-          //   setMapDetails(mapInfo);
-        });
-    } else {
-      await fetch("https://covid19.mohp.gov.np/covid/api/confirmedcases")
-        .then((response) => response.json())
-        .then((data) => {
-          const info = {
-            todayCases: data.nepal.today_newcase,
-            todayRecovered: data.nepal.today_recovered,
-            todayDeaths: data.nepal.today_death,
-            active: data.nepal.extra2,
-            cases: data.nepal.positive,
-            recovered: data.nepal.extra1,
-            deaths: data.nepal.deaths,
-            tests: data.nepal.samples_tested,
-          };
+            setMapCenter([
+              data.centroid.coordinates[1],
+              data.centroid.coordinates[0],
+            ]);
+            setMapZoom(10);
 
-          setDistrictInfo(info);
-          setDistrictName(districtValue);
-          setMapCenter([28.3949, 84.124]);
-          setMapZoom(7);
-        });
+            //   const mapInfo = {
+            //     name: data.title,
+            //     cases: data.covid_summary.cases,
+            //     recovered: data.covid_summary.recovered,
+            //     deaths: data.covid_summary.death,
+            //     active: data.covid_summary.active,
+            //     lat: data.centroid.coordinates[1],
+            //     long: data.centroid.coordinates[0],
+            //   };
+            //   setMapDetails(mapInfo);
+          });
+      }
     }
   };
 
