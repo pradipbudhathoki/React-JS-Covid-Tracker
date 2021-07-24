@@ -48,10 +48,7 @@ function App() {
             <HospitalPage />
           </Route>
           <Route path="/call-page">
-            <CallPage
-              district={districtData}
-              districtInfoCases={districtInfoCases}
-            />
+            <CallPage />
           </Route>
         </Switch>
       </div>
