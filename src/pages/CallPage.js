@@ -13,7 +13,7 @@ function CallPage() {
       await fetch("https://data.askbhunte.com/api/v1/districts")
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
 
           const info = data.map((district) => ({
             id: district.id,

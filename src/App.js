@@ -15,9 +15,6 @@ function App() {
   const [mapCenter, setMapCenter] = useState({});
   const [mapZoom, setMapZoom] = useState();
   const [mapDetails, setMapDetails] = useState([]);
-  const [districtInfoCases, setDistrictInfoCases] = useState([]);
-
-  console.log(districtInfoCases);
 
   return (
     <div className="app">
@@ -35,7 +32,6 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <MainPage
-              districtInfoCases={setDistrictInfoCases}
               district={districtData}
               districtInfo={districtCases}
               mapDistricts={mapDistricts}

@@ -11,40 +11,47 @@ function Map(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [casesType, setCasesType] = useState("cases");
 
-  // console.log("Info: Props.district ", props.district);
+  console.log("Info: Props.district ", props.district);
 
   useEffect(() => {
     setIsLoading(true);
-    const getLatitude = (district) => {
+    const getLatitude = (id) => {
       for (let i = 0; i < props.district.length; i++) {
-        if (district === props.district[i].title) {
+        if (id === props.district[i].id) {
           return props.district[i].lat;
         }
       }
     };
 
-    const getLongitude = (district) => {
+    const getLongitude = (id) => {
       for (let i = 0; i < props.district.length; i++) {
-        if (district === props.district[i].title) {
+        if (id === props.district[i].id) {
           return props.district[i].long;
         }
       }
     };
 
+    const getName = (id) => {
+      for (let i = 0; i < props.district.length; i++) {
+        if (id === props.district[i].id) {
+          return props.district[i].title;
+        }
+      }
+    };
+
     const getData = async () => {
-      await fetch(
-        "https://portal.edcd.gov.np/rest/api/fetchCasesByDistrict?filter=casesBetween&sDate=2020-01-01&eDate=2021-07-07&disease=COVID-19"
-      )
+      await fetch("https://data.askbhunte.com/api/v1/covid/summary")
         .then((response) => response.json())
         .then((data) => {
-          // console.log(data);
-          const info = data.map((district) => ({
-            province: district.Province,
-            district: district.District.slice(4),
-            value: district.District.slice(4).toLowerCase(),
-            cases: district.Value,
-            lat: getLatitude(district.District.slice(4)),
-            long: getLongitude(district.District.slice(4)),
+          // console.log("API", data);
+          let districtCases = data.district.cases;
+          console.log(districtCases);
+          const info = districtCases.map((district) => ({
+            id: district.district,
+            name: getName(district.district),
+            cases: district.count,
+            lat: getLatitude(district.district),
+            long: getLongitude(district.district),
           }));
 
           setDistrictData(info);
@@ -56,7 +63,6 @@ function Map(props) {
   }, [props.district]);
 
   console.log("Cases: districtData ", districtData);
-  props.districtCases(districtData);
 
   if (isLoading) {
     return <Loading />;

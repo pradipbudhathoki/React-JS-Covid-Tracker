@@ -14,7 +14,6 @@ function MainPage(props) {
   const typeValue = props.districtInfo.tests ? "Tests" : "";
   // console.log(casesType);
   console.log(districtCases);
-  props.districtInfoCases(districtCases);
 
   return (
     <div>
@@ -61,7 +60,6 @@ function MainPage(props) {
             />
           </div>
           <Map
-            districtCases={setDistrictCases}
             district={props.district}
             center={props.mapCenter}
             zoom={props.mapZoom}

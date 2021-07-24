@@ -41,18 +41,24 @@ function Table(props) {
           let districtCases = data.district.cases;
           // console.log(districtCases);
 
-          const casesArray = [];
-          for (let i = 0; i < districtCases.length; i++) {
-            const districts = {
-              id: districtCases[i].district,
-              name: getName(districtCases[i].district),
-              cases: districtCases[i].count,
-            };
-            casesArray.push(districts);
-          }
+          // const casesArray = [];
+          // for (let i = 0; i < districtCases.length; i++) {
+          //   const districts = {
+          //     id: districtCases[i].district,
+          //     name: getName(districtCases[i].district),
+          //     cases: districtCases[i].count,
+          //   };
+          //   casesArray.push(districts);
+          // }
           // console.log(casesArray);
 
-          let sortedData = compare(casesArray);
+          const districts = districtCases.map((district) => ({
+            id: district.district,
+            name: getName(district.district),
+            cases: district.count,
+          }));
+
+          let sortedData = compare(districts);
 
           setTableData(sortedData);
 
