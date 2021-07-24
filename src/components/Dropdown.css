@@ -1,0 +1,8 @@
+.dropdown {
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown__dropdown {
+  background-color: white;
+}

@@ -6,15 +6,20 @@ import LineGraph from "../components/LineGraph";
 import { useState } from "react";
 import Map from "../components/Map";
 import "leaflet/dist/leaflet.css";
+import Dropdown from "../components/Dropdown";
 
 function MainPage(props) {
   const [casesType, setCasesType] = useState("cases");
 
-  // districtCases not in use
-  // const [districtCases, setDistrictCases] = useState([]);
-  // console.log(districtCases);
+  const [districtData, setDistrictData] = useState([]);
+  const [districtInfo, setDistrictInfo] = useState({});
 
-  const typeValue = props.districtInfo.tests ? "Tests" : "";
+  const [mapCenter, setMapCenter] = useState({});
+  const [mapZoom, setMapZoom] = useState();
+  // const [mapDistricts, setMapDistricts] = useState([]);
+  // const [mapDetails, setMapDetails] = useState([]);
+
+  const typeValue = districtInfo.tests ? "Tests" : "";
 
   return (
     <div>
@@ -27,16 +32,16 @@ function MainPage(props) {
               isRed
               bgColor="#AFCBFA"
               active={casesType === "cases"}
-              cases={props.districtInfo.todayCases}
-              total={props.districtInfo.cases}
+              cases={districtInfo.todayCases}
+              total={districtInfo.cases}
             />
             <InfoBox
               onClick={(e) => setCasesType("recovered")}
               title="Recovered"
               bgColor="#ccffcc"
               active={casesType === "recovered"}
-              cases={props.districtInfo.todayRecovered}
-              total={props.districtInfo.recovered}
+              cases={districtInfo.todayRecovered}
+              total={districtInfo.recovered}
             />
             <InfoBox
               onClick={(e) => setCasesType("deaths")}
@@ -44,28 +49,32 @@ function MainPage(props) {
               isRed
               bgColor="#E48D99"
               active={casesType === "deaths"}
-              cases={props.districtInfo.todayDeaths}
-              total={props.districtInfo.deaths}
+              cases={districtInfo.todayDeaths}
+              total={districtInfo.deaths}
             />
             <InfoBox
               title="Active Cases"
               isRed
               bgColor="#F8EBFF"
-              cases={props.districtInfo.active}
-              total={props.districtInfo.tests}
+              cases={districtInfo.active}
+              total={districtInfo.tests}
               type={typeValue}
             />
           </div>
-          <Map
-            district={props.district}
-            center={props.mapCenter}
-            zoom={props.mapZoom}
-          />
+          <Map district={districtData} center={mapCenter} zoom={mapZoom} />
         </div>
 
         <div className="main__right">
           <CardContent>
             <div className="main__information">
+              <Dropdown
+                districtInfo={setDistrictInfo}
+                districtData={setDistrictData}
+                // mapDistricts={setMapDistricts}
+                mapCenter={setMapCenter}
+                mapZoom={setMapZoom}
+                // mapDetails={setMapDetails}
+              />
               <h3>NationWide Cases</h3>
               <LineGraph casesType="cases" />
               <h3>NationWide Recovered</h3>

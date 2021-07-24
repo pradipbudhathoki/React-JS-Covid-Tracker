@@ -5,40 +5,17 @@ import MainPage from "./pages/MainPage";
 import HospitalPage from "./pages/HospitalPage";
 import MainNavigation from "./components/MainNavigation";
 import CallPage from "./pages/CallPage";
-import { useState } from "react";
 
 function App() {
-  const [districtData, setDistrictData] = useState([]);
-  const [districtCases, setDistrictCases] = useState({});
-
-  const [mapDistricts, setMapDistricts] = useState([]);
-  const [mapCenter, setMapCenter] = useState({});
-  const [mapZoom, setMapZoom] = useState();
-  const [mapDetails, setMapDetails] = useState([]);
-
   return (
     <div className="app">
       <div>
-        <MainNavigation
-          districtData={setDistrictData}
-          districtCasesInfo={setDistrictCases}
-          mapDistricts={setMapDistricts}
-          mapCenter={setMapCenter}
-          mapZoom={setMapZoom}
-          mapInfo={setMapDetails}
-        />
+        <MainNavigation />
       </div>
       <div>
         <Switch>
           <Route path="/" exact>
-            <MainPage
-              district={districtData}
-              districtInfo={districtCases}
-              mapDistricts={mapDistricts}
-              mapCenter={mapCenter}
-              mapZoom={mapZoom}
-              mapDetails={mapDetails}
-            />
+            <MainPage />
           </Route>
           <Route path="/hospital-page">
             <HospitalPage />

@@ -11,7 +11,7 @@ function Map(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [casesType, setCasesType] = useState("cases");
 
-  console.log("Info: Props.district ", props.district);
+  // console.log("Info: Props.district ", props.district);
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,7 +45,7 @@ function Map(props) {
         .then((data) => {
           // console.log("API", data);
           let districtCases = data.district.cases;
-          console.log(districtCases);
+          // console.log(districtCases);
           const info = districtCases.map((district) => ({
             id: district.district,
             name: getName(district.district),
@@ -62,7 +62,7 @@ function Map(props) {
     getData();
   }, [props.district]);
 
-  console.log("Cases: districtData ", districtData);
+  // console.log("Cases: districtData ", districtData);
 
   if (isLoading) {
     return <Loading />;
