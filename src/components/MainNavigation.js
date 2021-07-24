@@ -94,7 +94,7 @@ function MainNavigation(props) {
             data.centroid.coordinates[1],
             data.centroid.coordinates[0],
           ]);
-          setMapZoom(11);
+          setMapZoom(10);
 
           const mapInfo = {
             name: data.title,

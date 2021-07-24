@@ -7,7 +7,7 @@ function MapElement({ data, casesType }) {
       hex: "#CC1034",
       rgb: "rgb(204, 16, 52)",
       half_op: "rgba(204, 16, 52, 0.5)",
-      multiplier: 250,
+      multiplier: 300,
     },
   };
 
@@ -23,7 +23,7 @@ function MapElement({ data, casesType }) {
           ]}
           color={casesTypeColors[casesType].hex}
           fillColor={casesTypeColors[casesType].hex}
-          fillOpacity={0.4}
+          fillOpacity={0.5}
           radius={
             Math.sqrt(district[casesType]) *
             casesTypeColors[casesType].multiplier
