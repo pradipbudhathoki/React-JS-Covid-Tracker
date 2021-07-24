@@ -1,8 +1,9 @@
 .table {
+  border-radius: 10px;
   margin-top: 20px;
   overflow: scroll;
   color: #6a5d5d;
-  background-color: white;
+  background-color: #e48d99;
   height: 450px;
 }
 
@@ -10,6 +11,7 @@
   display: flex;
   padding: 5px;
   justify-content: space-between;
+  color: #0e0c0c;
 }
 
 .table td {
@@ -18,5 +20,26 @@
 }
 
 .table tr:nth-of-type(odd) {
-  background-color: #f3f2f8;
+  background-color: #dd6273;
+}
+
+.table tr {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+.table tr::after {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.table tr:hover {
+  cursor: pointer;
+  transform: scale(1.07, 1.05);
+}
+
+.table tr:hover::after {
+  opacity: 1;
 }

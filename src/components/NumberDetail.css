@@ -1,8 +1,9 @@
 .number {
+  border-radius: 10px;
   margin-top: 20px;
   overflow: scroll;
   color: #6a5d5d;
-  background-color: white;
+  background-color: #afcbfa;
   height: 450px;
 }
 
@@ -12,6 +13,7 @@
   padding-left: 20px;
   padding-right: 20px;
   justify-content: space-between;
+  color: #0e0c0c;
 }
 
 .number td {
@@ -20,7 +22,7 @@
 }
 
 .number tr:nth-of-type(odd) {
-  background-color: #f3f2f8;
+  background-color: #3277d1;
 }
 
 .number tr {
@@ -39,7 +41,7 @@
   cursor: pointer;
 
   /* -webkit-transform: scale(1.1, 1.1); */
-  transform: scale(1.05, 1.5);
+  transform: scale(1.05, 1.02);
 }
 
 .number tr:hover::after {

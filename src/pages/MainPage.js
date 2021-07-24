@@ -9,11 +9,12 @@ import "leaflet/dist/leaflet.css";
 
 function MainPage(props) {
   const [casesType, setCasesType] = useState("cases");
-  const [districtCases, setDistrictCases] = useState([]);
+
+  // districtCases not in use
+  // const [districtCases, setDistrictCases] = useState([]);
+  // console.log(districtCases);
 
   const typeValue = props.districtInfo.tests ? "Tests" : "";
-  // console.log(casesType);
-  console.log(districtCases);
 
   return (
     <div>
@@ -25,7 +26,6 @@ function MainPage(props) {
               title="Corona Virus Cases"
               isRed
               bgColor="#AFCBFA"
-              // bgColor="#A8FFFF"
               active={casesType === "cases"}
               cases={props.districtInfo.todayCases}
               total={props.districtInfo.cases}
@@ -34,7 +34,6 @@ function MainPage(props) {
               onClick={(e) => setCasesType("recovered")}
               title="Recovered"
               bgColor="#ccffcc"
-              // bgColor="#E5F4C2"
               active={casesType === "recovered"}
               cases={props.districtInfo.todayRecovered}
               total={props.districtInfo.recovered}
@@ -44,7 +43,6 @@ function MainPage(props) {
               title="Deaths"
               isRed
               bgColor="#E48D99"
-              // bgColor="#FCAAAA"
               active={casesType === "deaths"}
               cases={props.districtInfo.todayDeaths}
               total={props.districtInfo.deaths}
@@ -53,7 +51,6 @@ function MainPage(props) {
               title="Active Cases"
               isRed
               bgColor="#F8EBFF"
-              // bgColor="#F8EBFF"
               cases={props.districtInfo.active}
               total={props.districtInfo.tests}
               type={typeValue}
@@ -69,9 +66,6 @@ function MainPage(props) {
         <div className="main__right">
           <CardContent>
             <div className="main__information">
-              {/* <h3> Cases by Districts</h3>
-              <Table district={props.district} /> */}
-
               <h3>NationWide Cases</h3>
               <LineGraph casesType="cases" />
               <h3>NationWide Recovered</h3>

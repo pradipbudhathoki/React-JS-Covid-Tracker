@@ -1,8 +1,9 @@
 .center {
+  display: flex;
+  justify-content: center;
   margin: auto;
+  margin-top: 10rem;
   width: 50%;
-  padding-left: 100px;
-  padding-top: 10px;
 }
 
 .loader {
